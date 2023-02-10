@@ -1,0 +1,223 @@
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(205, 86%, 17%);
+  --clr-primary-2: hsl(205, 77%, 27%);
+  --clr-primary-3: hsl(205, 72%, 37%);
+  --clr-primary-4: hsl(205, 63%, 48%);
+  /* primary/main color */
+  --clr-primary-5: hsl(205, 78%, 60%);
+  /* lighter shades of primary color */
+  --clr-primary-6: hsl(205, 89%, 70%);
+  --clr-primary-7: hsl(205, 90%, 76%);
+  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-primary-9: hsl(205, 90%, 88%);
+  --clr-primary-10: hsl(205, 100%, 96%);
+  /* darkest grey - used for headings */
+  --clr-grey-1: hsl(209, 61%, 16%);
+  --clr-grey-2: hsl(211, 39%, 23%);
+  --clr-grey-3: hsl(209, 34%, 30%);
+  --clr-grey-4: hsl(209, 28%, 39%);
+  /* grey used for paragraphs */
+  --clr-grey-5: hsl(210, 22%, 49%);
+  --clr-grey-6: hsl(209, 23%, 60%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-8: hsl(210, 31%, 80%);
+  --clr-grey-9: hsl(212, 33%, 89%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-white: #fff;
+  --clr-red-dark: hsl(360, 67%, 44%);
+  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-light: hsl(125, 71%, 66%);
+  --clr-black: #222;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+}
+
+/*
+=============== 
+Global Styles
+===============
+*/
+
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* 1REM === 10PX */
+  font-size: 62.5%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: var(--clr-grey-10);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  padding-top: 4rem;
+}
+
+.btn {
+  background: var(--clr-primary-5);
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius);
+  text-transform: capitalize;
+  color: var(--clr-white);
+  letter-spacing: var(--spacing);
+  border-color: transparent;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+.loading {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin-block: 4rem;
+}
+
+.title>h1 {
+  font-size: 2.5rem;
+}
+
+.underline {
+  width: 6rem;
+  height: 0.25rem;
+  background: var(--clr-primary-5);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  box-shadow: .3rem .3rem .3rem rgba(0, 0, 0, 0.1);
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.tour-card {
+  width: 90vw;
+  max-width: 50rem;
+  margin-inline: auto;
+  background: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.img-cont {
+  width: 100%;
+  height: 40rem;
+}
+
+.img-cont>img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem;
+}
+
+.tour-card>div {
+  padding: 1.5rem 1rem;
+}
+
+.tour-card>button {
+  outline: 1px solid #FF8686;
+  background: none;
+  border: none;
+  color: #FF8686;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: .5rem;
+  display: block;
+  margin-inline: auto;
+  transition: 200ms ease-in-out;
+  position: relative;
+  overflow: hidden;
+  font-size: 1.1rem;
+}
+
+.tour-card>button::after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.1);
+  background: #FF8686;
+  width: 100%;
+  height: 100%;
+  border-radius: .5rem;
+  transition: 200ms ease-in-out;
+  opacity: 0;
+}
+
+.tour-card>button::before {
+  position: absolute;
+  content: attr(data-btn);
+  transition: 200ms ease-in-out;
+  z-index: 1;
+  color: #fff;
+  opacity: 0;
+  font-size: 1.1rem;
+}
+
+.tour-card>button:is(:hover, :focus, :active)::after {
+  transform: translate(-50%, -50%) scale(1.1);
+  opacity: 1;
+}
+
+.tour-card>button:is(:hover, :focus)::before {
+  opacity: 1;
+}
+
+.tour h2 {
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 110%;
+  margin-bottom: 1rem;
+}
+
+.tour p {
+  font-size: 1.3rem;
+  color: #777;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.tour p>button {
+  border: none;
+  background: none;
+  color: #02BDFF;
+}
+
+.ntf {
+  text-align: center;
+}
+
+.ntf p {
+  font-size: 1.6rem;
+}
+
+.refresh {
+  border: none;
+  background: #02BDFF;
+  padding: 1rem 1.5rem;
+  border-radius: .5rem;
+}
